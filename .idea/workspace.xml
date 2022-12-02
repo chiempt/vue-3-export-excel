@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a2cf3fd3-128a-48b6-bfca-06f221bea491" name="Changes" comment="Fix: Bản ghi rỗng">
-      <change beforePath="$PROJECT_DIR$/ExportExcel.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ExportExcel.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-    </list>
+    <list default="true" id="a2cf3fd3-128a-48b6-bfca-06f221bea491" name="Changes" comment="Fix: Add docs" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,7 +47,7 @@
       <updated>1669892174434</updated>
       <workItem from="1669892175657" duration="2738000" />
       <workItem from="1669971911298" duration="6622000" />
-      <workItem from="1669997536483" duration="605000" />
+      <workItem from="1669997536483" duration="652000" />
     </task>
     <task id="LOCAL-00001" summary="Fix: Bản ghi rỗng">
       <created>1669973343354</created>
@@ -60,7 +56,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669973343354</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Fix: Add docs">
+      <created>1669998185239</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1669998185239</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -79,6 +82,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fix: Bản ghi rỗng" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix: Bản ghi rỗng" />
+    <MESSAGE value="Fix: Add docs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix: Add docs" />
   </component>
 </project>
