@@ -1,6 +1,6 @@
 {
   "name": "vue-3-export-excel",
-  "version": "1.0.0",
+  "version": "1.0.6",
   "description": "export excel",
   "main": "index.js",
   "scripts": {

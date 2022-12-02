@@ -166,7 +166,7 @@ export default {
       //Fields
       xlsData += '<tr>'
       for (const key in data[0]) {
-        xlsData += '<th bgcolor="#205737" style="font-size: 18px; color: #FEFEFE">' + key + '</th>'
+        xlsData += `<th bgcolor="${this.headerColor}" style="font-size: 18px; color: #FEFEFE">` + key + '</th>'
       }
       xlsData += '</tr>'
       xlsData += '</thead>'
