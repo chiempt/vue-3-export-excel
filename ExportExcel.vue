@@ -14,9 +14,8 @@ const saveData = (function () {
   document.body.appendChild(a);
   a.style = "display: none";
   return function (data, fileName) {
-    const json = JSON.stringify(data),
-        blob = new Blob([json], {type: "octet/stream"}),
-        url = window.URL.createObjectURL(blob);
+    const json = data,
+        url = window.URL.createObjectURL(json);
     a.href = url;
     a.download = fileName;
     a.click();
@@ -140,17 +139,20 @@ export default {
           'application/vnd.ms-excel'
       )
     },
+
     export: async function (data, filename, mime) {
       const blob = this.base64ToBlob(data, mime)
       if (typeof this.beforeFinish === 'function')
         await this.beforeFinish()
       saveData(blob, filename)
     },
+
     jsonToXLS(data) {
       const xlsTemp =
           '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><meta name=ProgId content=Excel.Sheet> <meta name=Generator content="Microsoft Excel 11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>${worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--><style>br {mso-data-placement: same-cell;}</style></head><body><table>${table}</table></body></html>'
       let xlsData = '<thead>'
       const colspan = Object.keys(data[0]).length
+      // eslint-disable-next-line @typescript-eslint/no-this-alias
       const _self = this
 
       //Header
@@ -164,14 +166,14 @@ export default {
       //Fields
       xlsData += '<tr>'
       for (const key in data[0]) {
-        xlsData += `<th bgcolor="${this.headerColor}" style="${this.style}">' + key + '</th>`
+        xlsData += '<th bgcolor="#205737" style="font-size: 18px; color: #FEFEFE">' + key + '</th>'
       }
       xlsData += '</tr>'
       xlsData += '</thead>'
 
       //Data
       xlsData += '<tbody>'
-      data.map(function (item) {
+      data.map(function (item, index) {
         xlsData += '<tr>'
         for (const key in item) {
           xlsData += '<td style="border: 1px solid #303030">' + _self.valueReformattedForMultilines(item[key]) + '</td>'
@@ -192,8 +194,9 @@ export default {
 
       return xlsTemp.replace('${table}', xlsData).replace('${worksheet}', this.worksheet)
     },
+
     jsonToCSV(data) {
-      const csvData = []
+      var csvData = []
       //Header
       if (this.title != null) {
         csvData.push(this.parseExtraData(this.title, '${data}\r\n'))
@@ -224,9 +227,11 @@ export default {
       }
       return csvData.join('')
     },
+
     getProcessedJson(data, header) {
       const keys = this.getKeys(data, header)
       const newData = []
+      // eslint-disable-next-line @typescript-eslint/no-this-alias
       const _self = this
       data.map(function (item, index) {
         const newItem = {}
@@ -239,6 +244,7 @@ export default {
 
       return newData
     },
+
     getKeys(data, header) {
       if (header) {
         return header
@@ -250,10 +256,11 @@ export default {
       }
       return keys
     },
+
     parseExtraData(extraData, format) {
       let parseData = ''
       if (Array.isArray(extraData)) {
-        for (let i = 0; i < extraData.length; i++) {
+        for (var i = 0; i < extraData.length; i++) {
           parseData += format.replace('${data}', extraData[i])
         }
       } else {
@@ -301,11 +308,13 @@ export default {
       const value = callback(item)
       return this.parseValue(value)
     },
+
     parseValue(value) {
       return value || value === 0 || typeof value === 'boolean'
           ? value
           : this.defaultValue
     },
+
     base64ToBlob(data, mime) {
       const base64 = window.btoa(window.unescape(encodeURIComponent(data)))
       const bstr = atob(base64)
